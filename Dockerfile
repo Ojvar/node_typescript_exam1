@@ -5,18 +5,21 @@ ARG	HOST=0.0.0.0
 FROM	node:alpine
 
 # Install git
-RUN	apk add git &&
-	apk update
+RUN	apk add git && \
+#	apk update && \
+	mkdir /usr/src -p && \
+	git clone https://github.com/Ojvar/node_typescript_exam1.git app && \
+	ls /usr/src
 
 # Select working path
 WORKDIR	/usr/src/app
 
 # Install npm
-COPY	package*.json ./
+#COPY	package*.json ./
 RUN	npm install
 
 # Copy source files
-COPY	. .
+#COPY	. .
 EXPOSE	$PORT
 
 # Setup env data
