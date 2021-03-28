@@ -4,12 +4,14 @@ ARG	HOST=0.0.0.0
 # Select base image
 FROM	node:alpine
 
+# Meta data
+MAINTAINER "jagadish Manchala"
+
 # Install git
 RUN	apk add git && \
-#	apk update && \
 	mkdir /usr/src -p && \
-	git clone https://github.com/Ojvar/node_typescript_exam1.git app && \
-	ls /usr/src
+	cd /usr/src && \
+	git clone https://github.com/Ojvar/node_typescript_exam1.git app
 
 # Select working path
 WORKDIR	/usr/src/app
